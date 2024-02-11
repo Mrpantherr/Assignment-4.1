@@ -1,0 +1,71 @@
+<!--Michael Ravelo-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./main.css">
+    <title>Memeimage</title>
+    <style>
+        /* Additional CSS for positioning the meme image */
+        #memeImage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px; /* needed to shrink image */
+            height: auto;
+        }
+    </style>
+    <script>
+        // Variables for image movement
+        var posX = 0;
+        var posY = 0;
+        var moveInterval;
+
+        // Function that starts moving the meme image
+        function startMoving() {
+            // Get the meme image element
+            var memeImage = document.getElementById('memeImage');
+            // Starts moving the meme image
+            moveInterval = setInterval(function() {
+                // Increment position
+                posX += 5;
+                posY += 5;
+                // Update image position
+                memeImage.style.left = posX + 'px';
+                memeImage.style.top = posY + 'px';
+            }, 50);
+            // Disable the Start button
+            document.getElementById('startButton').disabled = true;
+            // Enable the Stop button
+            document.getElementById('stopButton').disabled = false;
+        }
+
+        // Function to stop moving the meme image
+        function stopMoving() {
+            // Clear the interval to stop movement
+            clearInterval(moveInterval);
+            // Enable the Start button
+            document.getElementById('startButton').disabled = false;
+            // Disable the Stop button
+            document.getElementById('stopButton').disabled = true;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>This is a Wizard Meme Image!</h1>
+    <p>
+
+    <!-- Display the meme image -->
+    <img id="memeImage" src="memeImage.jpg">
+
+    </p>
+
+    <!-- Start button to trigger image movement -->
+    <button id="startButton" onclick="startMoving()">Start</button>
+    <!-- Stop button to stop image movement -->
+    <button id="stopButton" onclick="stopMoving()" disabled>Stop</button>
+
+</body>
+</html>
